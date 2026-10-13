@@ -1,4 +1,4 @@
-# dsh-shutup bundle patch
+# dsh-shutup bundle patch (target: dsh 0.2.0-rc.2)
 #
 # Layer order (later wins): bundles -> profile cordis.patch.yml -> $DSH_HOME patch -> --patch.
 # This file is the bundle layer, so a user overlay can still override us.
@@ -12,8 +12,14 @@
 # 2) Invert --no-open: upstream web-runtime uses `!!js ctx.webStartup.openBrowser`
 #    (commander maps `--no-open` to `open=false`, default `open=true`).
 #    Negating it makes the default quiet and `--no-open` open the browser.
-#    NOTE: patch replaces the whole `config`, so every key is restated here.
+#    NOTE: patch replaces the whole `config`, so every key is restated here —
+#    the 0.2.0-rc.2 web-runtime schema owns exactly
+#    openBrowser / printUrl / surfaceContext / trustedHosts.
 # 3) Register the host half below (index.js) that drops the ?token= gate.
+#
+# Row ids (`web-startup`, `web-runtime`) and their patch names are unchanged
+# from 0.1.x; the 0.2.0-rc.2 bundle adds preset patch files after this layer,
+# which we neither touch nor override.
 
 - id: web-startup
   disabled: true

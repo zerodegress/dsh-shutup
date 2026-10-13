@@ -2,7 +2,7 @@ import { Command } from 'commander'
 import { parseCmdline } from '@deepseek-ai/dsh-cmdline'
 
 // Replacement for the upstream `@deepseek-ai/dsh-web-app/startup` row
-// (`web-startup`). Faithful copy of the 0.1.2-rc.1 provider EXCEPT the
+// (`web-startup`). Faithful copy of the 0.2.0-rc.2 provider EXCEPT the
 // `--host 0.0.0.0` rejection is removed, restoring the 0.0.1-rc.1 CLI
 // surface for `--host` ("pass 0.0.0.0 to reach it from another machine").
 //
@@ -13,9 +13,9 @@ import { parseCmdline } from '@deepseek-ai/dsh-cmdline'
 // move is `disabled: true` on `web-startup` (see cordis.patch.yml) plus this
 // row providing the same `webStartup` service under a new row id.
 //
-// Provider shape is kept byte-identical to upstream
-// (`{ openBrowser, host?, port?, trustedHosts }`) so every
-// `!!js ctx.webStartup.*` expression and the `--no-open` inversion in
+// Provider shape is kept identical to upstream 0.2.0-rc.2
+// (`{ openBrowser, host?, port?, trustedHosts }`, no `--public-url` yet) so
+// every `!!js ctx.webStartup.*` expression and the `--no-open` inversion in
 // cordis.patch.yml keep working untouched. Startup auth behavior therefore
 // stays exactly the 0.0.1-rc.1 style: clean `http://…/` URLs, no `?token=`
 // gate (the token bypass itself lives in index.js).
@@ -31,7 +31,7 @@ export const WEB_STARTUP_SERVICE = 'webStartup'
 
 /**
  * This app's command: its flags, its description, and its help text.
- * Identical to upstream 0.1.2-rc.1 except `--host` re-advertises 0.0.0.0
+ * Identical to upstream 0.2.0-rc.2 except `--host` re-advertises 0.0.0.0
  * (the 0.0.1-rc.1 wording) and carries the LAN example again.
  * @returns a fresh program, so one process can parse more than once (tests).
  */

@@ -1,7 +1,7 @@
 {
   "name": "dsh-shutup",
-  "version": "0.2.0",
-  "description": "Shut up DSH web: no browser token gate, inverted --no-open (default stays quiet), --host 0.0.0.0 allowed",
+  "version": "0.3.0",
+  "description": "Shut up DSH web: no browser token gate, inverted --no-open (default stays quiet), --host 0.0.0.0 allowed. Ported to dsh 0.2.0-rc.2",
   "type": "module",
   "main": "index.js",
   "exports": {
@@ -16,8 +16,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-cmdline": "^0.1.2-rc.1",
+    "@deepseek-ai/dsh-cmdline": "^0.2.0-rc.2",
     "commander": "^15.0.0"
+  },
+  "engines": {
+    "dsh": ">=0.2.0-rc.2 <0.3.0"
   },
   "dsh": {
     "bundle": {
